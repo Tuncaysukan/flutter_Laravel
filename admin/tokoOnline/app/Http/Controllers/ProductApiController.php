@@ -12,4 +12,9 @@ class ProductApiController extends Controller
         $product = product::all();
          return response()->json(['message'=>'success','data'=>$product]);
     }
+
+    public function create(Request $request)
+    {
+        return response()->json(['message'=>'success','data'=>'data  test']);
+    }
 }
