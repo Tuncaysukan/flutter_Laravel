@@ -15,15 +15,13 @@ use App\Http\Controllers\ProductApiController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
 
 
 Route::get('/products',[ProductApiController::class,'index']);
 Route::get('/products/create',[ProductApiController::class,'create']);
-Route::post('/products/store',[ProductApiController::class,'store']);
-Route::get('/products/{id}/edit',[ProductApiController::class,'edit']);
+Route::get('/products/{id}',[ProductApiController::class,'show']);
+Route::post('/products',[ProductApiController::class,'store']);
 Route::post('/products/{id}',[ProductApiController::class,'update']);
 Route::get('/products/{id}/delete',[ProductApiController::class,'delete']);
 
