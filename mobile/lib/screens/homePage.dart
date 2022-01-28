@@ -4,11 +4,16 @@ import 'package:http/http.dart' as http;
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
-  final String url = 'https://jsonplaceholder.typicode.com/users';
+  final String url = 'https://jsonplaceholder.typicode.com/posts';
+
+  //final String url = 'http://127.0.0.1:8000/products';
+
+
   Future getProducts() async {
     var response = await http.get(Uri.parse(url));
 
-     return json.decode(response.body);
+     final data=  jsonDecode(response.body) as List;
+     return data;
   }
 
   @override
@@ -25,10 +30,10 @@ class HomePage extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(
-                itemCount: ((snapshot.data as dynamic).length),
+               itemCount: 1,
                 itemBuilder: (context, index) {
-                  return  ListTile(
-                      title: Text((snapshot.data as dynamic) [index].name),
+                  return Center(
+                   child:  Text(snapshot.data.toString()),
                   );
                 },
               );
